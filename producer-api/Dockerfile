@@ -15,3 +15,11 @@ COPY . .
 
 # Build the binary.
 RUN CGO_ENABLED=0 GOOS=linux go build -o main
+
+FROM scratch
+
+# Copy our static executable.
+COPY --from=builder /app/main /app/main
+
+# Run the hello binary.
+ENTRYPOINT ["/app/main"]

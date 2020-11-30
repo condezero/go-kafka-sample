@@ -3,15 +3,14 @@ package main
 import (
 	"context"
 	"fmt"
-	"os"
 
 	fiber "github.com/gofiber/fiber/v2"
 	kafka "github.com/segmentio/kafka-go"
 )
 
 func main() {
-	kafkaUrl := os.Getenv("brokerUrl")
-	topic := os.Getenv("topic")
+	kafkaUrl := "localhost:9092"
+	topic := "test-topic"
 	writer := getWriter(kafkaUrl, topic)
 
 	defer writer.Close()
