@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"os"
 	"strings"
 
 	kafka "github.com/segmentio/kafka-go"
@@ -23,9 +22,9 @@ func getKafkaReader(kafkaURL, topic, groupID string) *kafka.Reader {
 
 func main() {
 	// get kafka reader using environment variables.
-	kafkaURL := os.Getenv("kafkaURL")
-	topic := os.Getenv("topic")
-	groupID := os.Getenv("groupID")
+	kafkaURL := "localhost:9202"
+	topic := "test-topic"
+	groupID := "mygroupid"
 
 	reader := getKafkaReader(kafkaURL, topic, groupID)
 
